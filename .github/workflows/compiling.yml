@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-    -name: checkout
-    uses: actions/checkout@v3
-    -name: install GCC
-    run: sudo apt-get install gcc
-    -name: C compiling
-    run: gcc -o main.exe main.c 
+   
+    - uses: actions/checkout@v3
+    - name: install GCC
+    - run: sudo apt-get install gcc
+    - name: C compiling
+    - run: gcc -o main.exe main.c 
 
   
