@@ -8,10 +8,10 @@ jobs:
   ubuntu-build:
     runs-on: ubuntu-latest
 
-        steps:
-       my_jobs:
-      uses: actions/checkout@v3
-    - name: C compiling instal
+  steps:
+    -name: checkout
+    uses: actions/checkout@v3
+    - name: C compiling
     run: sudo apt-get install gcc
     - name: C compiling
     run: gcc -o main.exe main.c 
