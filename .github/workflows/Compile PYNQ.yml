@@ -1,0 +1,24 @@
+name: Cross-Compile for PYNQ-Z2
+#everytime i push to main it wil run actions
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Cross-Compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install gcc-arm-linux-gnueabihf
+
+    - name: Cross-Compile C code
+      run: |
+        arm-linux-gnueabihf-gcc -o PYNQ main.c
+       
