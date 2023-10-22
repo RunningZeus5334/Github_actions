@@ -1,24 +1,27 @@
-name: Compile C 
+name: Compile C
 
-#on push file we want to compile
-on: [push]
+# Trigger the workflow on push events
+on:
+  push:
+    branches:
+      - main  # Change this to your desired branch if needed
 
- 
-
-#we do gcc on linux ubuntu build
+# Define the jobs for the workflow
 jobs:
-  ubuntu-build:
+  build:
     runs-on: ubuntu-latest
 
-        steps:
-           get_current_step:
-            name: Check current step number
-    
-           - name: Checkout
-            uses: actions/checkout@v3
-          - name: install GCC
-           run: sudo apt-get install gcc
-          - name: C compiling
-           run: gcc -o main.exe main.c 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  
+    - name: Install GCC
+      run: sudo apt-get update && sudo apt-get -y install gcc
+
+    - name: Compile C code
+      run: |
+        gcc -o main main.c
+        # You can add additional commands here if needed
+
+    - name: Run the compiled program
+      run: ./main
