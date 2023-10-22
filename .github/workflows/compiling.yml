@@ -11,9 +11,9 @@ jobs:
   steps:
     -name: checkout
     uses: actions/checkout@v3
-    - name: C compiling
+    -name: install GCC
     run: sudo apt-get install gcc
-    - name: C compiling
+    -name: C compiling
     run: gcc -o main.exe main.c 
 
   
